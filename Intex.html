@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --card: #f2f2f2;
+      --accent: #6c63ff;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #ffffff;
+      --card: #222222;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    button {
+      border: none;
+      background: var(--accent);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #menuBtn {
+      display: none;
+      font-size: 22px;
+    }
+
+    section {
+      padding: 85px 8%;
+      min-height: 60vh;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .skill {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    form {
+      max-width: 500px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      margin: 10px 0;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    #formMessage {
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: var(--card);
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 15px 5%;
+      }
+
+      #menuBtn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: var(--card);
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">MyPortfolio</div>
+
+    <button id="menuBtn" aria-label="Open navigation menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="themeBtn">🌙 Dark Mode</button>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Hello, I'm <span>Your Name</span></h1>
+    <p>
+      Welcome to my personal portfolio website.
+      I am learning web development and JavaScript.
+    </p>
+    <a href="#about">
+      <button>Explore More</button>
+    </a>
+  </section>
+
+  <section id="about" class="reveal">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I am a student interested in technology and web development.
+        I enjoy learning new skills and creating creative projects.
+        This portfolio is part of my Codomax Module 3 project.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <h2>My Skills</h2>
+
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Responsive Design</div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+      <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+        required
+      >
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Your Email"
+        required
+      >
+
+      <textarea
+        id="message"
+        placeholder="Your Message"
+        required
+      ></textarea>
+
+      <button type="submit">Submit</button>
+
+      <p id="formMessage"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 My Portfolio | Created for Codomax Module 3</p>
+  </footer>
+
+  <script>
+    // Mobile Navigation Menu
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
+
+    menuBtn.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu after clicking a link
+    document.querySelectorAll("#navMenu a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navMenu.classList.remove("active");
+      });
+    });
+
+    // Dark and Light Mode Toggle
+    const themeBtn = document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+        themeBtn.textContent = "☀️ Light Mode";
+      } else {
+        themeBtn.textContent = "🌙 Dark Mode";
+      }
+    });
+
+    // Scroll Animation
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    });
+
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      observer.observe(element);
+    });
+
+    // Contact Form Validation
+    const contactForm = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (name === "" || email === "" || message === "") {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Please fill in all fields.";
+      } else if (!emailPattern.test(email)) {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Please enter a valid email address.";
+      } else {
+        formMessage.style.color = "green";
+        formMessage.textContent = "Form validated successfully!";
+        contactForm.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
